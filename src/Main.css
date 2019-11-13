@@ -1,0 +1,46 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header {
+    background-color: green;
+}
+
+main {
+    padding-top: 15px;
+    display: flex;
+}
+
+section#repository-list {
+    background-color: red;
+    width: 25%;
+}
+
+section#commit-list {
+    background-color: blue;
+    width: 75%;
+}
+
+.repository {
+    border-bottom: solid 1px;
+}
+
+.repository:last-child {
+    border-bottom: none;
+}
+
+.min-height {
+    height: 100px;
+}
+
+.padding-10-0 {
+    padding: 10px 0px;
+}
+
+.padding-10-15 {
+    padding: 10px 15px;
+}
+
+.margin-30 {
+    margin-right: 30px;
+}
