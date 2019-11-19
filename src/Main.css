@@ -23,6 +23,7 @@ section#commit-list {
 
 .repository {
     border-bottom: solid 1px;
+    cursor: pointer;
 }
 
 .repository:last-child {
