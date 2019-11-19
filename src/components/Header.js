@@ -6,17 +6,23 @@ class Header extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {repoName: ""};
+        this.state = {repositoryName: ""};
     }
 
     handleChange = e => {
         this.setState({[e.target.name]: e.target.value});
     }
 
-    handleSumit = e => {
-        const { repoName } = this.state;
-        this.props.onSubmit(e, repoName);
-        this.setState({repoName: ""});
+    handleSumit = async e => {
+        const { repositoryName } = this.state;
+
+        let repoName = repositoryName.replace(new RegExp("/", "g"), "-")
+        const result = await this.props.onSubmit(e, repoName);
+
+        if(result) {
+            this.setState({repositoryName: result});
+        }
+
     }
 
     render(){
@@ -26,13 +32,14 @@ class Header extends React.Component {
                     <input
                         type="text"
                         id="repo-name"
-                        placeholder="Type the name of one of yours repository"
+                        placeholder="Add a repo"
                         onChange={this.handleChange}
-                        value={this.state.RepoName}
-                        name="repoName"
+                        value={this.state.repositoryName}
+                        name="repositoryName"
                     />
 
                     <button
+                        type='reset'
                         onClick={this.handleSumit}
                     >
                         Add

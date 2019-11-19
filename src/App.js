@@ -33,7 +33,7 @@ class App extends React.Component {
       e.preventDefault();
       const repoGithubResponse = await githubAPI.get(`/repos/rjLelis/${repoName}`);
       if(repoGithubResponse.status !== 200) {
-        return null;
+        return false;
       }
 
       const { name, description } = repoGithubResponse.data;
@@ -44,12 +44,14 @@ class App extends React.Component {
       });
 
       if (postRepository.status !== 201) {
-        return null;
+        return false;
       }
 
       const repoResponse = await backendAPI.get('/repositories');
       const { results } = repoResponse.data;
       this.setState({ repositories: results });
+
+      return true;
 
     }
 
