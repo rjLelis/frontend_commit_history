@@ -30,6 +30,11 @@ section#commit-list {
     border-bottom: none;
 }
 
+.repository:hover {
+    background-color: black;
+    color: red;
+}
+
 .min-height {
     height: 100px;
 }
