@@ -20,7 +20,7 @@ class Header extends React.Component {
         const result = await this.props.onSubmit(e, repoName);
 
         if(result) {
-            this.setState({repositoryName: result});
+            this.setState({repositoryName: ""});
         }
 
     }
@@ -39,7 +39,7 @@ class Header extends React.Component {
                     />
 
                     <button
-                        type='reset'
+                        type='submit'
                         onClick={this.handleSumit}
                     >
                         Add
