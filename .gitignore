@@ -5,3 +5,6 @@
 /build
 
 npm-debug.log*
+
+# misc
+notes.txt
