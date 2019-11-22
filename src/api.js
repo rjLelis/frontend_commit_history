@@ -6,5 +6,6 @@ const backendAPI = axios.create({
 
 const githubAPI = axios.create({
     'baseURL': 'https://api.github.com'
-})
+});
+
 export { backendAPI, githubAPI };

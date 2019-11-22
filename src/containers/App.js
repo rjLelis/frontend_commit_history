@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './components/Header';
-import RepositoryList from './components/RepositoryList';
-import CommitList from './components/CommitList';
-import { backendAPI, githubAPI } from './api';
-import './Main.css';
+import Header from './../components/Header';
+import RepositoryList from './../components/RepositoryList';
+import CommitList from './../components/CommitList';
+import { backendAPI, githubAPI } from './../api';
+import './../Main.css';
 
 class App extends React.Component {
 
@@ -22,8 +22,9 @@ class App extends React.Component {
     }
 
     async handleClick(repoName) {
+      const { username } = this.props;
       const commitsResponse = await githubAPI
-        .get(`/repos/rjLelis/${repoName}/commits`);
+        .get(`/repos/${username}/${repoName}/commits`);
 
       const commits = commitsResponse.data;
       this.setState({commits});
@@ -31,7 +32,10 @@ class App extends React.Component {
 
     handleSubmit = async (e, repoName) => {
       e.preventDefault();
-      const repoGithubResponse = await githubAPI.get(`/repos/rjLelis/${repoName}`);
+      const { username } = this.props;
+      const repoGithubResponse = await githubAPI
+        .get(`/repos/${username}/${repoName}`);
+
       if(repoGithubResponse.status !== 200) {
         return false;
       }
@@ -40,7 +44,8 @@ class App extends React.Component {
 
       const postRepository = await backendAPI.post('/repositories', {
         name,
-        description
+        description,
+        username
       });
 
       if (postRepository.status !== 201) {
